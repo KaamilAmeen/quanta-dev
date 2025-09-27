@@ -15,6 +15,28 @@ const signUp = async (username, email, password) => {
   }
 };
 
+const getUserByEmail = async (email) => {
+  try {
+    const query = "CALL getUserByEmail(?);";
+    const rows = await pool.query(query, [email]);
+    return rows;
+  } catch (error) {
+    console.error({ error: error.message });
+  }
+}
+
+const getUserRoles = async (userId) => {
+  try {
+    const query = "CALL getUserRoles(?);";
+    const [rows] = await pool.query(query, [userId]);
+    return rows;
+  } catch (error) {
+    console.log({error: error.message});
+  }
+}
+
 module.exports = {
   signUp,
+  getUserByEmail,
+  getUserRoles
 };

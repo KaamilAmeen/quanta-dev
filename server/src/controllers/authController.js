@@ -16,6 +16,20 @@ const signUp = async (req, res) => {
   }
 };
 
+const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const result = await authService.login(email, password);
+    if (!email || !password) {
+      res.status(400).json({ message: "All Fields are Required" });
+    }
+    res.status(200).json({ message: "Login Successful", data: result });
+  } catch (error) {
+    res.status(500).json({error: error.message});
+  }
+};
+
 module.exports = {
   signUp,
+  login
 };
