@@ -3,6 +3,8 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const path = require('path');
 
+const quantaRoutes = require('./src/routes/quantaRoutes');
+
 // Configure dotend to lead env var of .env file
 dotenv.config({path: path.resolve(__dirname, '.env')});
 
@@ -15,7 +17,8 @@ app.use(cors());
 // To parse JSON Bodies
 app.use(express.json());
 
-app.get('/');
+// Routes
+app.use('/quanta', quantaRoutes);
 
 // Start the server
 const port = process.env.PORT || 5000;

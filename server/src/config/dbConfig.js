@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 const path = require('path');
 
 // Config dotenv to load env variable from .env file
-dotenv.config({path: path.resolve(__dirname, '../.env')});
+dotenv.config({path: path.resolve(__dirname, '../../.env')});
 
 // Create a connection pool to the DB
 const pool = mysql.createPool({
@@ -14,4 +14,4 @@ const pool = mysql.createPool({
     port: process.env.DB_PORT,
 });
 
-module.export = pool.promise();
+module.exports = pool.promise();
